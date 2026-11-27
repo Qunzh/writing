@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d7ff3d">
+<title>Writing by Kingsley Zheng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion, hushed: the essays of the same person whose drawings hang next door
+   IDEA the twin of the artworks page: titles down the left; point at one and its opening appears on the right
+   PICTURE no pictures; the essay's own subtitle, set large, and its first lines
+   COLOUR the same as the artworks page: pure black ground, white ink, grey labels, acid lime for the bar, the chosen title and the way out
+   TYPE Syne (bold, wide) for titles; Manrope for reading
+   LAYOUT a lime bar with Artworks / Writing; titles left, preview right; each essay is read on Substack.
+          Phone: one list, every essay open */
+:root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--soft:#cfcdc7;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--ft);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* the top bar: one lime band, with the way between the two pages */
+.bar{display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--acc);color:var(--on)}
+.brand{margin-right:auto;min-height:44px;display:flex;align-items:center;font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:4px}
+.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;text-decoration:none;border:1px solid rgba(5,5,5,.3)}
+.nav a:hover{border-color:var(--on)}
+.nav a[aria-current]{background:var(--on);color:var(--acc);border-color:var(--on)}
+.bar :focus-visible{outline-color:var(--on)}
+
+.cover{height:100%;overflow-x:hidden;overflow-y:auto;padding:clamp(12px,2.5vw,32px) max(16px,3vw) clamp(20px,3vw,40px);background:var(--bg);scrollbar-width:none}
+.cover::-webkit-scrollbar{display:none}
+.split{display:grid;grid-template-columns:minmax(300px,36%) minmax(0,1fr);gap:clamp(32px,4.2vw,64px);align-items:start}
+.sl{position:sticky;top:0}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-height:1.05;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.lede{color:var(--mute);font-size:13px;line-height:1.6;margin:10px 0 clamp(18px,3vh,28px)}
+.titles{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.titles li{border-bottom:1px solid var(--line)}
+.ti{display:grid;grid-template-columns:clamp(70px,6vw,84px) minmax(0,1fr) 22px;align-items:baseline;width:100%;padding:clamp(9px,1.4vh,13px) 0;border:0;background:none;text-align:left;cursor:pointer;color:var(--mute);font-family:var(--fd);font-weight:700;font-size:clamp(17px,1.6vw,23px);line-height:1.12;letter-spacing:-.025em;transition:color .2s}
+.ti .dt{font:500 13px/1 var(--ft);letter-spacing:.02em;color:var(--mute);transition:color .2s}
+.ti .ar{color:transparent;font-size:.8em;text-align:right;transition:color .2s,transform .2s}
+.ti:hover,.ti.on{color:var(--acc)}
+.ti.on .dt,.ti.on .ar{color:var(--acc)}
+.ti:hover .ar{transform:translateX(3px)}
+.drawer{display:none}
+
+/* the preview: the essay's subtitle set large, its opening lines, and the way out to Substack */
+.sr{min-width:0;padding-top:var(--cap-top,0px);max-width:44em}
+.kick{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 18px;font-size:13px;color:var(--acc)}
+.kick span+span{color:var(--mute)}
+.sub{font-family:var(--fd);font-weight:700;font-size:clamp(26px,2.9vw,44px);line-height:1.1;letter-spacing:-.035em;margin:0 0 clamp(20px,3vh,32px);text-wrap:balance}
+.ex{font-size:clamp(16px,1.25vw,18px);line-height:1.7;color:var(--soft);margin:0 0 28px;max-width:36em;text-wrap:pretty}
+.ex::before{content:"\201C"}
+.ex::after{content:"\201D"}
+.read{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--acc);color:var(--on);font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s}
+.read:hover{transform:translateX(3px)}
+.read:focus-visible{outline-color:var(--acc);outline-offset:3px}
+.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.cover.enter .titles li{animation:rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*60ms + 120ms)}
+
+/* phone: no split; every essay shows its opening under its title */
+@media(max-width:760px){
+.split{grid-template-columns:1fr}
+.sl{position:static}
+.sr{display:none}
+.drawer{display:block;padding:0 0 22px}
+.drawer .sub{font-size:21px;margin-bottom:12px}
+.drawer .ex{font-size:15px;margin-bottom:18px}
+.ti,.ti.on{color:var(--ink);cursor:default}
+.ti .dt,.ti.on .dt{color:var(--acc)}
+.ti .ar{display:none}
+.brand{font-size:16px}
+.nav a{padding:0 12px}
+}
+@media(prefers-reduced-motion:reduce){.rise,.cover.enter .titles li{animation:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="./">Kingsley Zheng</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="https://qunzh.github.io/artworks/">Artworks</a>
+    <a href="./" aria-current="page">Writing</a>
+  </nav>
+</header>
+<main class="cover" id="cover" tabindex="-1" aria-label="Writing"></main>
+<script>
+{
+/* the essays, newest first; each is read on Substack */
+const ESSAYS=[
+ {title:"The Conjugacy of Information and Meaning",
+  sub:"Rereading Lem’s <i>His Master’s Voice</i> through Weaver’s communication theory",
+  date:"16 Feb 2026",short:"Feb 2026",topics:["Information theory","Literature"],
+  ex:"Rereading <i>His Master’s Voice</i>, I was struck by a deep correspondence between the communicative impasse Lem depicts, which is humanity’s failed attempt to decode an alien signal, and the communication model Warren Weaver built on top of Shannon’s information theory.",
+  url:"https://qunzh.substack.com/p/the-conjugacy-of-information-and"},
+ {title:"The Revolt of the Vehicles",
+  sub:"Why Dennett’s de-Cartesianization doesn’t go far enough",
+  date:"12 Feb 2026",short:"Feb 2026",topics:["Philosophy of mind","Evolution"],
+  ex:"In <i>From Bacteria to Bach and Back</i>, Daniel Dennett attempts to answer the ultimate hard question: where does the mind come from? … I believe Dennett’s project stops short at two critical junctures where his own tools could have carried him much further.",
+  url:"https://qunzh.substack.com/p/the-revolt-of-the-vehicles-why-dennetts-3c2"}
+];
+const preview=e=>`<p class="kick"><span>Essay · ${e.date}</span><span>${e.topics.join(" · ")}</span></p><h2 class="sub">${e.sub}</h2><p class="ex">${e.ex}</p><a class="read" href="${e.url}" target="_blank" rel="noopener">Read on Substack <span aria-hidden="true">&#8599;</span></a>`;
+
+const introOK=!matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cover=document.getElementById("cover");
+if(introOK)cover.classList.add("enter");
+cover.innerHTML=`<div class="split">
+  <div class="sl">
+    <h1>Writing by Kingsley Zheng</h1>
+    <p class="lede">All writing &copy; Qiyun (Kingsley) Zheng.</p>
+    <ul class="titles">${ESSAYS.map((e,i)=>`<li style="--i:${i}"><button type="button" class="ti" data-i="${i}"><span class="dt">${e.short}</span><span>${e.title}</span><span class="ar" aria-hidden="true">&#8594;</span></button><div class="drawer">${preview(e)}</div></li>`).join("")}</ul>
+  </div>
+  <div class="sr" id="sr" aria-live="polite"></div>
+</div>`;
+const sr=document.getElementById("sr"),h1=cover.querySelector("h1");
+const phone=matchMedia("(max-width: 760px)");
+
+/* the preview starts level with the top of the title's letters, as on the artworks page */
+const titleTop=()=>{
+  try{
+    const cs=getComputedStyle(h1),fs=parseFloat(cs.fontSize),lh=parseFloat(cs.lineHeight)||fs*1.05;
+    const c=document.createElement("canvas").getContext("2d");
+    c.font=`${cs.fontWeight} ${fs}px ${cs.fontFamily}`;
+    const m=c.measureText(h1.textContent);
+    if(m.fontBoundingBoxAscent==null)return fs*.16;
+    return (lh-(m.fontBoundingBoxAscent+m.fontBoundingBoxDescent))/2+m.fontBoundingBoxAscent-m.actualBoundingBoxAscent;
+  }catch(e){return 0}
+};
+const align=()=>{
+  /* the kicker's own line box adds a little space above its letters; take that off so the letters line up */
+  const k=sr.querySelector(".kick"),extra=k?(parseFloat(getComputedStyle(k).lineHeight)-13*0.72)/2:0;
+  sr.style.setProperty("--cap-top",Math.max(0,titleTop()-Math.max(0,extra)).toFixed(1)+"px");
+};
+let shown=-1;
+const show=(i,animate)=>{
+  if(i===shown)return;shown=i;
+  cover.querySelectorAll(".ti").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));
+  sr.innerHTML=`<div${animate?' class="rise"':""}>${preview(ESSAYS[i])}</div>`;
+  align();
+};
+cover.addEventListener("pointerover",e=>{const t=e.target.closest(".ti");if(t&&e.pointerType!=="touch"&&!phone.matches)show(+t.dataset.i,true)});
+cover.addEventListener("focusin",e=>{const t=e.target.closest(".ti");if(t&&!phone.matches)show(+t.dataset.i,true)});
+cover.addEventListener("click",e=>{const t=e.target.closest(".ti");if(t&&!phone.matches)show(+t.dataset.i,true)});
+show(0,introOK);
+if(introOK)setTimeout(()=>cover.classList.remove("enter"),1400);
+new ResizeObserver(align).observe(cover);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(align);
+}
+</script>
+</body>
+</html>
