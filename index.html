@@ -14,7 +14,7 @@
    PICTURE no pictures; the essay's own subtitle, set large, and its first lines
    COLOUR the same as the artworks page: pure black ground, white ink, grey labels, acid lime for the bar, the chosen title and the way out
    TYPE Syne (bold, wide) for titles; Manrope for reading
-   LAYOUT a lime bar with Artworks / Writing; titles left, preview right; each essay is read on Substack.
+   LAYOUT a lime bar with Artworks / Writing; titles left, preview right; each essay opens in full on its own page (and is on Substack too).
           Phone: one list, every essay open */
 :root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--soft:#cfcdc7;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
 :root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
@@ -41,7 +41,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-h
 .lede{color:var(--mute);font-size:13px;line-height:1.6;margin:10px 0 clamp(18px,3vh,28px)}
 .titles{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .titles li{border-bottom:1px solid var(--line)}
-.ti{display:grid;grid-template-columns:clamp(70px,6vw,84px) minmax(0,1fr) 22px;align-items:baseline;width:100%;padding:clamp(9px,1.4vh,13px) 0;border:0;background:none;text-align:left;cursor:pointer;color:var(--mute);font-family:var(--fd);font-weight:700;font-size:clamp(17px,1.6vw,23px);line-height:1.12;letter-spacing:-.025em;transition:color .2s}
+.ti{display:grid;text-decoration:none;grid-template-columns:clamp(70px,6vw,84px) minmax(0,1fr) 22px;align-items:baseline;width:100%;padding:clamp(9px,1.4vh,13px) 0;border:0;background:none;text-align:left;cursor:pointer;color:var(--mute);font-family:var(--fd);font-weight:700;font-size:clamp(17px,1.6vw,23px);line-height:1.12;letter-spacing:-.025em;transition:color .2s}
 .ti .dt{font:500 13px/1 var(--ft);letter-spacing:.02em;color:var(--mute);transition:color .2s}
 .ti .ar{color:transparent;font-size:.8em;text-align:right;transition:color .2s,transform .2s}
 .ti:hover,.ti.on{color:var(--acc)}
@@ -57,9 +57,12 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-h
 .ex{font-size:clamp(16px,1.25vw,18px);line-height:1.7;color:var(--soft);margin:0 0 28px;max-width:36em;text-wrap:pretty}
 .ex::before{content:"\201C"}
 .ex::after{content:"\201D"}
+.ways{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
 .read{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--acc);color:var(--on);font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s}
 .read:hover{transform:translateX(3px)}
 .read:focus-visible{outline-color:var(--acc);outline-offset:3px}
+.sub-link{font-size:14px;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .2s,border-color .2s}
+.sub-link:hover{color:var(--acc);border-color:var(--acc)}
 .rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 .cover.enter .titles li{animation:rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*60ms + 120ms)}
@@ -72,7 +75,7 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-h
 .drawer{display:block;padding:0 0 22px}
 .drawer .sub{font-size:21px;margin-bottom:12px}
 .drawer .ex{font-size:15px;margin-bottom:18px}
-.ti,.ti.on{color:var(--ink);cursor:default}
+.ti,.ti.on{color:var(--ink)}
 .ti .dt,.ti.on .dt{color:var(--acc)}
 .ti .ar{display:none}
 .brand{font-size:16px}
@@ -92,20 +95,20 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-h
 <main class="cover" id="cover" tabindex="-1" aria-label="Writing"></main>
 <script>
 {
-/* the essays, newest first; each is read on Substack */
+/* the essays, newest first; each opens in full on its own page, and is on Substack too */
 const ESSAYS=[
  {title:"The Conjugacy of Information and Meaning",
-  sub:"Rereading Lem’s <i>His Master’s Voice</i> through Weaver’s communication theory",
-  date:"16 Feb 2026",short:"Feb 2026",topics:["Information theory","Literature"],
+  sub:"Rereading Lem’s <i>His Master’s Voice</i> Through Weaver’s Communication Theory",
+  date:"16 Feb 2026",short:"Feb 2026",mins:16,topics:["Information theory","Literature"],page:"conjugacy-of-information-and-meaning.html",
   ex:"Rereading <i>His Master’s Voice</i>, I was struck by a deep correspondence between the communicative impasse Lem depicts, which is humanity’s failed attempt to decode an alien signal, and the communication model Warren Weaver built on top of Shannon’s information theory.",
   url:"https://qunzh.substack.com/p/the-conjugacy-of-information-and"},
  {title:"The Revolt of the Vehicles",
-  sub:"Why Dennett’s de-Cartesianization doesn’t go far enough",
-  date:"12 Feb 2026",short:"Feb 2026",topics:["Philosophy of mind","Evolution"],
+  sub:"Why Dennett’s De-Cartesianization Doesn't Go Far Enough",
+  date:"12 Feb 2026",short:"Feb 2026",mins:13,topics:["Philosophy of mind","Evolution"],page:"revolt-of-the-vehicles.html",
   ex:"In <i>From Bacteria to Bach and Back</i>, Daniel Dennett attempts to answer the ultimate hard question: where does the mind come from? … I believe Dennett’s project stops short at two critical junctures where his own tools could have carried him much further.",
   url:"https://qunzh.substack.com/p/the-revolt-of-the-vehicles-why-dennetts-3c2"}
 ];
-const preview=e=>`<p class="kick"><span>Essay · ${e.date}</span><span>${e.topics.join(" · ")}</span></p><h2 class="sub">${e.sub}</h2><p class="ex">${e.ex}</p><a class="read" href="${e.url}" target="_blank" rel="noopener">Read on Substack <span aria-hidden="true">&#8599;</span></a>`;
+const preview=e=>`<p class="kick"><span>Essay · ${e.date} · ${e.mins} min read</span><span>${e.topics.join(" · ")}</span></p><h2 class="sub">${e.sub}</h2><p class="ex">${e.ex}</p><div class="ways"><a class="read" href="${e.page}">Read the essay <span aria-hidden="true">&#8594;</span></a><a class="sub-link" href="${e.url}" target="_blank" rel="noopener">On Substack &#8599;</a></div>`;
 
 const introOK=!matchMedia("(prefers-reduced-motion: reduce)").matches;
 const cover=document.getElementById("cover");
@@ -114,7 +117,7 @@ cover.innerHTML=`<div class="split">
   <div class="sl">
     <h1>Writing by Kingsley Zheng</h1>
     <p class="lede">All writing &copy; Qiyun (Kingsley) Zheng.</p>
-    <ul class="titles">${ESSAYS.map((e,i)=>`<li style="--i:${i}"><button type="button" class="ti" data-i="${i}"><span class="dt">${e.short}</span><span>${e.title}</span><span class="ar" aria-hidden="true">&#8594;</span></button><div class="drawer">${preview(e)}</div></li>`).join("")}</ul>
+    <ul class="titles">${ESSAYS.map((e,i)=>`<li style="--i:${i}"><a class="ti" data-i="${i}" href="${e.page}"><span class="dt">${e.short}</span><span>${e.title}</span><span class="ar" aria-hidden="true">&#8594;</span></a><div class="drawer">${preview(e)}</div></li>`).join("")}</ul>
   </div>
   <div class="sr" id="sr" aria-live="polite"></div>
 </div>`;
@@ -146,7 +149,6 @@ const show=(i,animate)=>{
 };
 cover.addEventListener("pointerover",e=>{const t=e.target.closest(".ti");if(t&&e.pointerType!=="touch"&&!phone.matches)show(+t.dataset.i,true)});
 cover.addEventListener("focusin",e=>{const t=e.target.closest(".ti");if(t&&!phone.matches)show(+t.dataset.i,true)});
-cover.addEventListener("click",e=>{const t=e.target.closest(".ti");if(t&&!phone.matches)show(+t.dataset.i,true)});
 show(0,introOK);
 if(introOK)setTimeout(()=>cover.classList.remove("enter"),1400);
 new ResizeObserver(align).observe(cover);

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d7ff3d">
+<title>The Revolt of the Vehicles: Why Dennett’s De-Cartesianization Doesn&#x27;t Go Far Enough · Writing by Kingsley Zheng</title>
+<meta name="description" content="An Internal Critique of From Bacteria to Bach and Back">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE an essay, read slowly: the same quiet black room as the drawings, now for words
+   IDEA a single reading column under the lime bar; a thin lime line along the bar shows how far you have read
+   PICTURE the essay's own header image, then text
+   COLOUR pure black ground, warm white text a step softer than the titles, grey labels, acid lime for the bar, progress, links and marks
+   TYPE Syne (bold, wide) for the title and section heads; Manrope for reading, 18px on a 1.75 line
+   LAYOUT one column about 68 characters wide; the original on Substack linked at the top and the end. Phone: the same, narrower */
+:root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--text:#dcdad4;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:18px/1.75 var(--ft)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+::selection{background:var(--acc);color:var(--on)}
+/* the lime bar, with the way back to the other pages and a line that fills as you read */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--acc);color:var(--on)}
+.brand{margin-right:auto;min-height:44px;display:flex;align-items:center;font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:4px}
+.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;line-height:1;text-decoration:none;border:1px solid rgba(5,5,5,.3)}
+.nav a:hover{border-color:var(--on)}
+.nav a[aria-current]{background:var(--on);color:var(--acc);border-color:var(--on)}
+.bar :focus-visible{outline-color:var(--on)}
+.progress{position:absolute;left:0;bottom:-3px;height:3px;width:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+
+.essay{max-width:68ch;margin:0 auto;padding:clamp(28px,6vh,72px) max(18px,3vw) 0}
+.back{display:inline-flex;gap:8px;font-size:14px;color:var(--mute);text-decoration:none;margin-bottom:clamp(20px,4vh,36px)}
+.back:hover{color:var(--acc)}
+.kick{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 16px;font-size:13px;line-height:1.5;color:var(--acc)}
+.kick span+span{color:var(--mute)}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(34px,5vw,62px);line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin:0 0 18px;text-wrap:balance}
+.dek{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--ink);margin:0 0 26px;text-wrap:pretty}
+.orig{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid var(--acc);border-radius:999px;color:var(--acc);font-size:14px;text-decoration:none;transition:background .2s,color .2s}
+.orig:hover{background:var(--acc);color:var(--on)}
+.lead{margin:clamp(28px,5vh,48px) 0 clamp(28px,5vh,44px)}
+.lead img{display:block;width:100%;height:auto;background:#111}
+
+/* the essay itself */
+.body p{margin:0 0 1.15em;text-wrap:pretty}
+.body h2{font-family:var(--fd);font-weight:700;font-size:clamp(24px,2.4vw,30px);line-height:1.15;letter-spacing:-.03em;color:var(--ink);margin:2.2em 0 .7em;text-wrap:balance}
+.body h3{font-family:var(--fd);font-weight:700;font-size:clamp(19px,1.7vw,22px);line-height:1.25;letter-spacing:-.02em;color:var(--ink);margin:1.8em 0 .6em}
+.body hr+h2,.body hr+h3{margin-top:0}
+.body strong{color:var(--ink);font-weight:700}
+.body em{font-style:italic}
+.body a{color:var(--acc);text-underline-offset:3px}
+.body blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:2px solid var(--acc);color:var(--ink);font-size:1.06em}
+.body blockquote p:last-child{margin-bottom:0}
+.body ol,.body ul{margin:0 0 1.2em;padding-left:1.4em}
+.body li{margin:0 0 .6em;padding-left:.3em}
+.body li::marker{color:var(--acc);font-weight:700}
+.body hr{border:0;width:44px;height:2px;background:var(--acc);margin:2.6em auto}
+
+.end{max-width:68ch;margin:0 auto;padding:clamp(36px,7vh,72px) max(18px,3vw) clamp(48px,9vh,96px)}
+.end .rule{width:100%;height:1px;background:var(--line);margin-bottom:28px}
+.end p{font-size:15px;color:var(--mute);margin:0 0 18px}
+.next{display:block;margin-top:34px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none}
+.next span{display:block;font-size:13px;color:var(--mute);margin-bottom:6px}
+.next b{display:block;font-family:var(--fd);font-weight:700;font-size:clamp(20px,2.2vw,26px);line-height:1.15;letter-spacing:-.03em;color:var(--ink);transition:color .2s}
+.next:hover b{color:var(--acc)}
+.end .back{margin:24px 0 0}
+@media(max-width:600px){
+body{font-size:17px;line-height:1.7}
+.brand{font-size:16px}
+.nav a{padding:0 12px}
+}
+@media(prefers-reduced-motion:reduce){.orig,.next b{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="./">Kingsley Zheng</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="https://qunzh.github.io/artworks/">Artworks</a>
+    <a href="./" aria-current="page">Writing</a>
+  </nav>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+<main>
+  <article class="essay">
+    <a class="back" href="./"><span aria-hidden="true">&#8592;</span>All writing</a>
+    <p class="kick"><span>Essay · 12 Feb 2026</span><span>13 min read</span><span>Philosophy of mind · Evolution</span></p>
+    <h1>The Revolt of the Vehicles: Why Dennett’s De-Cartesianization Doesn't Go Far Enough</h1>
+    <p class="dek">An Internal Critique of <i>From Bacteria to Bach and Back</i></p>
+    <a class="orig" href="https://qunzh.substack.com/p/the-revolt-of-the-vehicles-why-dennetts-3c2" target="_blank" rel="noopener">Also on Substack <span aria-hidden="true">&#8599;</span></a>
+    <figure class="lead"><img src="https://substackcdn.com/image/fetch/$s_!DJey!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9861791d-76d4-4118-8ddb-23e97ca50aef_5000x3334.jpeg" width="1456" height="971" alt="" decoding="async"></figure>
+    <div class="body">
+<p><strong>Tribute to Daniel Dennett. </strong></p>
+<h2>What the Book is About</h2>
+<p>In <em>From Bacteria to Bach and Back</em>, Daniel Dennett attempts to answer the ultimate hard question: where does the mind come from? His strategy is a bottom-up narrative starting with bacteria: simple replicators devoid of consciousness, comprehension, or intent. The genes they carry develop increasingly sophisticated <strong>competence</strong> through natural selection: the ability to phototax, avoid toxins, and exchange genetic material.</p>
+<p>Dennett’s core insight, which he hammers home repeatedly, is <strong>competence without comprehension</strong>. Natural selection is a blind design engine; it produces structures functionally as exquisite as those of a human engineer, yet without a “designer.” The story then ascends from genes to brains, from brains to language, and from language to culture. Here, Dennett enlists Richard Dawkins’ concept of the <strong>meme</strong>—— the cultural replicator. Languages, technologies, and beliefs are memes that replicate, mutate, and compete within the human brain, just as genes do within organisms.</p>
+<p>The human mind is not a dualistic miracle leaping out of the void; it is the result of memes accumulating and co-evolving within a sufficiently complex brain. Dennett argues that while comprehension exists on a continuum between humans and animals, humans are unique because we don’t just acquire comprehension; we use our recursive capacity to treat comprehension as an independent tool.</p>
+<p>The finish line is Bach. Bach’s fugues represent the pinnacle of cultural achievement: complex structures of memes with staggering internal architecture. Dennett’s thesis is that from bacteria to Bach, there is no ontological rupture, only a gradual increase of competence. It is a thorough project of de-Cartesianization. However, I believe Dennett’s project stops short at two critical junctures where his own tools could have carried him much further.</p>
+<hr>
+<h2>Two Entrances to the Same Rabbit Hole</h2>
+<p>If you have read Douglas Hofstadter’s <em>Gödel, Escher, Bach</em> (GEB), it is hard not to feel that Dennett is telling the same story. Both books share the same core problem: how do meaning, mind, and “self” emerge from a purely mindless material substrate? Hofstadter delves into the problem through formal systems and <strong>Strange Loops</strong>, while Dennett dives in through evolutionary biology and cognitive science, but they meet in the center of the rabbit hole.</p>
+<p>Hofstadter’s central symbol is a self-referential loop: a formal system complex enough to encode propositions about itself, thereby “seeing” itself. Consciousness emerges from this loop. Dennett’s route is isomorphic: natural selection is the ultimate engine of competence without comprehension, gradually increasing competence until a system that appears to have comprehension is produced. Both of them go against the intuition that there must be a “True Understanding Subject” sitting inside the control room. Both of them deny the self-evident Cartesian <em>Cogito</em> and dissolve the concept of soul.</p>
+<p>Yet they diverge in flavor: Hofstadter romanticizes the self, viewing the Strange Loop as consciousness itself instead of an illusion. Dennett is colder, famously describing consciousness as a <strong>user illusion</strong>. On one hand, <em>GEB</em> makes you feel meaning is a discovered miracle; on the other hand, <em>From Bacteria to Bach and Back</em> makes you feel that meaning is “explained away” (though Dennett insists explaining is not denying). To see where Dennett stops, one must first see where these two books converge.</p>
+<hr>
+<h2>The “Design” Gimmick: A Counterattack (Bit Unrefined)</h2>
+<p>Dennett insists on using the word “design” to describe the products of natural selection. His reasons are twofold. First, <strong>polemic</strong>: to hijack the word from Intelligent Design proponents and prove design does not require a Designer. Second, to pave the way for <strong>functionalism</strong>. To say something is designed to do X implies it can succeed or fail in doing X and it “should” or “shouldn’t” be doing this and that in doing X. Without this normativity, you cannot say an eye is “for seeing” or a heart “should” pump blood. The entire edifice of functionalism rests on this normativity emerging from natural processes.</p>
+<p>However, this description faces two problems:</p>
+<ol><li><p><strong>Teleological Smuggling:</strong> If we truly accept competence without comprehension as a premise, why do we need to use a word as teleologically loaded as “design”? Structure is structure, organization is organization. Things produced by natural selection and those produced by human engineers are ontologically the same as they are both structures generated by replicators (genes and memes) with diverse survival strategies under selection pressure. Dennett himself accepts Dawkins’ <strong>Vehicle Theory</strong>. Taking this theory seriously implies that “human designers designing” is just a shorthand for a cluster of memes residing in a complex vehicle performing combinations and permutations, with some results being selected by the environment. During this process, the designer’s “intent” and “creativity” are merely projections on the <strong>Manifest Image</strong> (the ontology of everyday human experience or the icons on our conscious software interface). Interestingly, Dennett says the Manifest Image is not an illusion and has real ontological status. But this can be reversed. If descriptions at the level of the Manifest Image are true only in the sense that they have explanatory and predictive power but are not additional physical causal forces, then “design” is just a mid-level description that can be replaced by the neutral “organization.” Retaining “design” feels like smuggling back the very teleology he promised to dissolve.</p>
+</li>
+<li><p><strong>Functionalism without Normativity:</strong> We don’t need normativity to describe function. When a replicator survives, its existence alters the environment, which in turn exerts selection pressure on future variations. This iteration creates stable functional correlations: between hearts and circulation, eyes and light. You do not need to say the heart is “designed” to pump blood. You only need to say that the function of pumping blood and other parts of the circulatory system form a mutually reinforcing persistent structure where mutations deviating from this structure are eliminated. “The heart should pump blood” translates to: in this persistent structure, pumping blood is the condition for the structure to continue existing. Normativity is not a requirement dropped from heaven but a description of survival conditions of the persistent structure itself. This is what Darwinism has always done as an unconscious screening process. One might argue that functional adaptation is descriptive while normativity is prescriptive, so the former cannot cancel the latter due to the naturalistic fallacy. However, doesn’t the naturalistic fallacy itself presuppose the independent status of normativity that I am denying?</p>
+</li>
+</ol>
+<p>Of course, these counterattacks are not yet fully refined. First, after dismantling teleology, one must face the problem that if a designer is merely a vehicle for meme combinations, the compatibilist free will promised by Dennett becomes harder to defend. I do not intend to conclude with determinism either, so how to handle this? Furthermore, my description of the Manifest Image is somewhat vague. Dennett says in his book, kind of paradoxically, that the Manifest Image exists ontologically but is also a user interface illusion, and reasons (of survival and selection) are real but often <strong>free-floating rationales</strong> that can only be grasped by humans. Do understandings and interpretations completed by humans in the Manifest Image interface possess causal efficacy that is independent of those generated by the complexity of meme combinations and permutations?</p>
+<hr>
+<h2>Can Compatibilist Free Will be Defended?</h2>
+<p>Dennett is a compatibilist: he believes free will and determinism can coexist. He argues that free will doesn’t require the ability to have done otherwise, but only that you are the kind of system that can be influenced by reasons. A thermostat cannot do this; a worm can do it slightly; a human does it brilliantly. Free will is just the name we give to this capacity once it reaches a certain complexity.</p>
+<p>But if we take the Vehicle Theory seriously, we must ask: <strong>whose reasons?</strong> If we are merely vehicles for memes, even very complex ones that can recursively examine their own memes, then being influenced by reasons is merely the result of competition and selection of memes occurring within the vehicle. Dennett argues that humans are unique because we can use our recursive ability to treat understanding as an independent capacity. But our ability to look at our own memes doesn’t change our ontological status as a vehicle. It just makes the vehicle more sophisticated. A self-modifying vehicle is still a vehicle.</p>
+<p>There is a relationship of <strong>mutual domestication</strong> here. We domesticate memes and memes domesticate us, shaping our cognitive structures and culture. But “mutual” does not mean “transcendental.” There is a mutual arms race between host and parasite, but we do not say the host is no longer the niche for the parasite. If we carry Dennett’s de-Cartesianization to the end, the story of free will can be told more simply as seen in the following three versions:</p>
+<ol><li><p><strong>Free Will as the Experience of Epistemic Impasse:</strong> Memes are not distributed evenly within a vehicle. Some are deep-seated; others are flimsy. This uneven distribution constitutes what we call “belief.” When this belief network faces a decision point where the tension between memes doesn’t yield a clear winner, the resulting state of under-determination is experienced at the Manifest Image level as “I am making a choice.” Free will is not a capacity but an experience of an epistemic dilemma.</p>
+</li>
+<li><p><strong>Free Will as Post-hoc Attribution:</strong> Most daily decisions, such as what to wear or what to eat, do not involve deep belief tensions, yet people still feel these actions are their own doing. In these cases, free will is a form of hindsight. In daily life, we act before we think; the vehicle’s priority is action. The “Self-Model” arrives late to the party and codes the automatic behavior as “I chose this.” This aligns perfectly with Dennett’s <strong>Multiple Drafts Model</strong>: conscious experience is not a live broadcast; it is a post-hoc editorial. We mistake the “thickness” of this narrative for the degree of our freedom.</p>
+</li>
+<li><p><strong>Free Will as Interface Incompleteness:</strong> There is a structural echo of Gödel here. The physical level of the brain is not a formal system, but the experience of free will happens at the level of the Manifest Image or the user interface. The user level where we think and communicate with language and logic is closer to a formal system—it operates like a quasi-formal system. Because this system is self-referential and sufficiently complex, it cannot exhaust or fully explain itself from within. The gap we feel in our self-explanation is what we label free will.</p>
+<hr>
+</li>
+</ol>
+<h2>Does Understanding Possess Causal Efficacy Beyond Meme Permutations?</h2>
+<h3>Dennett’s Manifest Image and Understanding</h3>
+<p>The Manifest Image is a concept by Wilfrid Sellars that Dennett borrows heavily. It refers to the way we experience the world daily: seeing tables, feeling pain, and believing others have goals. This is contrasted with the <strong>Scientific Image</strong> of particles, fields, and gene frequencies. Dennett’s position is that both are indispensable. He calls the Manifest Image a user illusion similar to icons on a computer desktop. Clicking a folder icon involves electrical signals and disk operations, but the icon is the only practical way for you to operate the computer. He also insists these things are real patterns with objective predictive and explanatory power. There is a tension here between calling it an illusion and a real pattern that he has never fully resolved.</p>
+<h3>Understanding: Gradual or Emergent?</h3>
+<p>Dennett emphasizes that understanding is gradual; bacteria and humans all lie on a continuous spectrum (of competence without comprehension). There’s no magic moment. At the same time, he admits that understanding is emergent because the system appears to suddenly “truly understand” when competence reaches a certain complexity. This tension is resolved by distinguishing levels of description. The underlying accumulation of competence is gradual, but the label of “understanding” which appears on the user interface is emergent. It is like heating water: the temperature change occurs gradually, but the <strong>boiling phenomenon</strong> (description) appears all of a sudden. The water has not become a new substance, but your description of it has undergone a phase transition.</p>
+<h3>De-Darwinization</h3>
+<p>Dennett argues that the Darwinian process produced humans, and humans achieved <strong>de-Darwinization</strong>. We do not need to wait for blind natural selection because we can simulate and predict in our minds. Dennett believes we can jump out of the Darwinian process to perform “true intelligent design.” However, if you accept the vehicle theory completely, de-Darwinization is just the internalization of the Darwinian process where memes compete within the vehicle rather than the vehicle competing in the environment. The logic of variation and selection remains the same.</p>
+<h3>Free-floating Rationales</h3>
+<p>Dennett established the concept of <strong>free-floating rationales</strong> where reasons exist in nature but belong to no one. A moth flies into a flame because navigating by a light source is a good strategy in a natural environment. This reason is real and explains the behavior, but the moth does not know it. Then, Dennett says that with humans, the <strong>reasons have landed</strong>. Humans can grasp rationales and use them to guide behavior.</p>
+<hr>
+<p>This leads back to the question of whether understanding has causal efficacy beyond meme permutations. If understanding produces extra causal efficacy, then Dennett is right and de-Darwinization is real. If not, then everything is the internalization of the Darwinian process.</p>
+<h3>The Argument for Extra Causal Efficacy</h3>
+<p>Consider an engineer who understands aerodynamics and designs a plane. A person who does not understand aerodynamics could theoretically achieve the same result through pure trial and error by making millions of random shapes. But the engineer skips almost the entire search space and reaches a good solution. Dennett would say this jump is the causal efficacy of understanding—a <strong>compression of the search space</strong>. This compression capability cannot be explained solely by meme combinations because “understanding” itself is cited as the cause for why the search space was compressed.</p>
+<h3>The Response from the Vehicle Framework</h3>
+<p>Under the vehicle framework, the search becomes systematic not because understanding intervened as an extra power, but because the existing meme network inside the vehicle is a <strong>non-random filter</strong>. The engineer has memes related to mathematical formulas and experimental results that form a belief network with different affinity for new memes. The search is non-random because the filter was accumulated through countless previous Darwinian rounds of education and failure. Understanding is not an independent causal power but a Manifest Image description of the filtering characteristics of the meme network. It is like how <strong>temperature</strong> is a macroscopic description of molecular motion rather than an independent force.</p>
+<h3>Free-floating Rationales Have Never Landed</h3>
+<p>By Dennett’s own logic, understanding results from gradual accumulation. Then, why would rationales suddenly stop floating? Within the vehicle framework, memes enter the vehicle and are combined, with certain combinations being retained. The self-model of the vehicle encodes this as “I understand.” But the rationales have never truly landed. They are still free-floating, only now the venue has moved from the external environment to the meme network inside the vehicle. The engineer’s understanding is simply the appearance of this process on the user interface.</p>
+<h3>Dennett’s Counter-attack</h3>
+<p>Dennett could say understanding is too effective to be just a compressed description. His “real patterns” argument suggests that if a high-level description has predictive power almost equal to the bottom level, it captures a real pattern. Furthermore, he might argue that phase transitions are real. Water truly boils and its behavior becomes qualitatively different. When a meme network is complex enough to represent and operate on its own memes, a phase transition occurs. The rationales land because the behavior of the system becomes qualitatively different after this threshold.</p>
+<h3>Final Response: Phase Transitions are Real but do not Introduce New Ontology</h3>
+<p>Boiling is a real phase transition, but steam is not a new physical ontological category. It is still water molecules with a different relationship between them. Boiling changes the organization of molecules rather than introducing a new causal force called “steam power.” Similarly, even if the human mind undergoes a phase transition, this change affects the organization of memes rather than introducing a new force called “understanding.” Phase transitions are real, but they do not equal new ontological categories. There is only the same set of memes operating in a new, self-referential state of organization. The rationales are still free-floating and do not belong to the engineer, much like the reason for pumping blood does not belong to the heart.</p>
+<hr>
+<h2>The Final Judgment</h2>
+<p>My disagreement with Dennett may not be factual but a matter of the choice of description. Dennett is right that phase transitions are real, that there’s a real difference between rationales floating and rationales “landing,” and that understanding as a real pattern has high predictive power.</p>
+<p>The vehicle framework is also right that phase transitions do not introduce new ontological categories. The disagreement is whether this phase transition is worth marking as an ontological category with words like “design” and “understanding.” Dennett thinks it is, while the vehicle framework thinks it is not because the underlying logic remains the same.</p>
+<p>The vehicle framework is more economical because it uses the same set of tools to explain the entire journey from bacteria to Bach. <strong>Occam’s razor</strong> stands with the vehicle side. If understanding is just a pattern and not a power, there is no ontological difference between an AI simulating understanding and a human who “truly” understands. If understanding is a real causal power, that difference might exist.</p>
+<hr>
+<h2>Dennett’s Legacy</h2>
+<p>These points are not trying to negate Dennett. On the contrary, this is a tribute that uses his own tools to discuss his limits. He gave us competence without comprehension, the ontological status of the Manifest Image, and the philosophical deepening of meme theory—all of which are extremely powerful intellectual tools.</p>
+
+    </div>
+  </article>
+  <footer class="end">
+    <div class="rule"></div>
+    <p>First published on Substack, where you can comment and subscribe for new essays.</p>
+    <a class="orig" href="https://qunzh.substack.com/p/the-revolt-of-the-vehicles-why-dennetts-3c2" target="_blank" rel="noopener">Read on Substack <span aria-hidden="true">&#8599;</span></a>
+    <a class="next" href="conjugacy-of-information-and-meaning.html"><span>Next essay</span><b>The Conjugacy of Information and Meaning &#8594;</b></a>
+    <a class="back" href="./"><span aria-hidden="true">&#8592;</span>All writing</a>
+  </footer>
+</main>
+<script>
+/* the lime line under the bar fills as you read */
+{
+  const bar=document.getElementById("progress"),art=document.querySelector(".essay");
+  let raf=0;
+  const update=()=>{raf=0;const r=art.getBoundingClientRect(),total=r.height-innerHeight*.6;bar.style.setProperty("--p",Math.max(0,Math.min(1,-r.top/Math.max(1,total))).toFixed(4))};
+  addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(update)},{passive:true});
+  addEventListener("resize",update);update();
+}
+</script>
+</body>
+</html>

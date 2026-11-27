@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d7ff3d">
+<title>The Conjugacy of Information and Meaning · Writing by Kingsley Zheng</title>
+<meta name="description" content="Rereading Lem’s His Master’s Voice Through Weaver’s Communication Theory">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE an essay, read slowly: the same quiet black room as the drawings, now for words
+   IDEA a single reading column under the lime bar; a thin lime line along the bar shows how far you have read
+   PICTURE the essay's own header image, then text
+   COLOUR pure black ground, warm white text a step softer than the titles, grey labels, acid lime for the bar, progress, links and marks
+   TYPE Syne (bold, wide) for the title and section heads; Manrope for reading, 18px on a 1.75 line
+   LAYOUT one column about 68 characters wide; the original on Substack linked at the top and the end. Phone: the same, narrower */
+:root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--text:#dcdad4;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:18px/1.75 var(--ft)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+::selection{background:var(--acc);color:var(--on)}
+/* the lime bar, with the way back to the other pages and a line that fills as you read */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--acc);color:var(--on)}
+.brand{margin-right:auto;min-height:44px;display:flex;align-items:center;font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:4px}
+.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;line-height:1;text-decoration:none;border:1px solid rgba(5,5,5,.3)}
+.nav a:hover{border-color:var(--on)}
+.nav a[aria-current]{background:var(--on);color:var(--acc);border-color:var(--on)}
+.bar :focus-visible{outline-color:var(--on)}
+.progress{position:absolute;left:0;bottom:-3px;height:3px;width:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+
+.essay{max-width:68ch;margin:0 auto;padding:clamp(28px,6vh,72px) max(18px,3vw) 0}
+.back{display:inline-flex;gap:8px;font-size:14px;color:var(--mute);text-decoration:none;margin-bottom:clamp(20px,4vh,36px)}
+.back:hover{color:var(--acc)}
+.kick{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 16px;font-size:13px;line-height:1.5;color:var(--acc)}
+.kick span+span{color:var(--mute)}
+h1{font-family:var(--fd);font-weight:700;font-size:clamp(34px,5vw,62px);line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin:0 0 18px;text-wrap:balance}
+.dek{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--ink);margin:0 0 26px;text-wrap:pretty}
+.orig{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid var(--acc);border-radius:999px;color:var(--acc);font-size:14px;text-decoration:none;transition:background .2s,color .2s}
+.orig:hover{background:var(--acc);color:var(--on)}
+.lead{margin:clamp(28px,5vh,48px) 0 clamp(28px,5vh,44px)}
+.lead img{display:block;width:100%;height:auto;background:#111}
+
+/* the essay itself */
+.body p{margin:0 0 1.15em;text-wrap:pretty}
+.body h2{font-family:var(--fd);font-weight:700;font-size:clamp(24px,2.4vw,30px);line-height:1.15;letter-spacing:-.03em;color:var(--ink);margin:2.2em 0 .7em;text-wrap:balance}
+.body h3{font-family:var(--fd);font-weight:700;font-size:clamp(19px,1.7vw,22px);line-height:1.25;letter-spacing:-.02em;color:var(--ink);margin:1.8em 0 .6em}
+.body hr+h2,.body hr+h3{margin-top:0}
+.body strong{color:var(--ink);font-weight:700}
+.body em{font-style:italic}
+.body a{color:var(--acc);text-underline-offset:3px}
+.body blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:2px solid var(--acc);color:var(--ink);font-size:1.06em}
+.body blockquote p:last-child{margin-bottom:0}
+.body ol,.body ul{margin:0 0 1.2em;padding-left:1.4em}
+.body li{margin:0 0 .6em;padding-left:.3em}
+.body li::marker{color:var(--acc);font-weight:700}
+.body hr{border:0;width:44px;height:2px;background:var(--acc);margin:2.6em auto}
+
+.end{max-width:68ch;margin:0 auto;padding:clamp(36px,7vh,72px) max(18px,3vw) clamp(48px,9vh,96px)}
+.end .rule{width:100%;height:1px;background:var(--line);margin-bottom:28px}
+.end p{font-size:15px;color:var(--mute);margin:0 0 18px}
+.next{display:block;margin-top:34px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none}
+.next span{display:block;font-size:13px;color:var(--mute);margin-bottom:6px}
+.next b{display:block;font-family:var(--fd);font-weight:700;font-size:clamp(20px,2.2vw,26px);line-height:1.15;letter-spacing:-.03em;color:var(--ink);transition:color .2s}
+.next:hover b{color:var(--acc)}
+.end .back{margin:24px 0 0}
+@media(max-width:600px){
+body{font-size:17px;line-height:1.7}
+.brand{font-size:16px}
+.nav a{padding:0 12px}
+}
+@media(prefers-reduced-motion:reduce){.orig,.next b{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="./">Kingsley Zheng</a>
+  <nav class="nav" aria-label="Sections">
+    <a href="https://qunzh.github.io/artworks/">Artworks</a>
+    <a href="./" aria-current="page">Writing</a>
+  </nav>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+<main>
+  <article class="essay">
+    <a class="back" href="./"><span aria-hidden="true">&#8592;</span>All writing</a>
+    <p class="kick"><span>Essay · 16 Feb 2026</span><span>16 min read</span><span>Information theory · Literature</span></p>
+    <h1>The Conjugacy of Information and Meaning</h1>
+    <p class="dek">Rereading Lem’s <i>His Master’s Voice</i> Through Weaver’s Communication Theory</p>
+    <a class="orig" href="https://qunzh.substack.com/p/the-conjugacy-of-information-and" target="_blank" rel="noopener">Also on Substack <span aria-hidden="true">&#8599;</span></a>
+    <figure class="lead"><img src="https://substackcdn.com/image/fetch/$s_!9S1x!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7b19b2e-b73c-469c-a43c-f5b57fbe9c12_1200x898.jpeg" width="1200" height="898" alt="" decoding="async"></figure>
+    <div class="body">
+<p><strong>This essay contains spoilers for Stanisław Lem’s </strong><em><strong>His Master’s Voice</strong></em><strong>.</strong></p>
+<h2>Lem and Cybernetics</h2>
+<p>Rereading <em>His Master’s Voice</em>, I was struck by a deep correspondence between the communicative impasse Lem depicts, which is humanity’s failed attempt to decode an alien signal, and the communication model Warren Weaver built on top of Shannon’s information theory. This may be more than a correspondence. It may be a case of intellectual inheritance pushed to its extreme.</p>
+<p>The connection is not far-fetched. Lem (1921–2006) came of age at the height of the cybernetics movement. Claude Shannon’s paper <em>A Mathematical Theory of Communication</em> appeared in 1948; Weaver’s companion essay, <em>Recent Contributions to the Mathematical Theory of Communication</em>, followed in 1949. As a young research assistant at the Konserwatorium Naukoznawcze (Circle for the Science of Science), Lem’s job was to summarize latest literature of cybernetics research for life-science journals. He later joined the Polish Cybernetics Association and in 1964 published <em>Summa Technologiae</em>, a work of speculative nonfiction steeped in the conceptual frameworks of cybernetics and information theory. Given this background, it is virtually impossible that Lem never encountered Shannon-Weaver. Indeed, <em>His Master’s Voice</em> directly employs core Shannon-Weaver terminology: redundancy, noise, channel utilization.</p>
+<p>But I want to argue for more than the claim that Lem “knew about” Weaver. I want to argue that <em>His Master’s Voice</em> can be read as Lem taking up Weaver’s central insights about communication and, through an extreme thought experiment, probing what happens when those insights are pushed to their ultimate consequences.</p>
+<hr>
+<h2>Weaver’s Communication Model and the Conjugacy Conjecture</h2>
+<p>To understand what Lem is doing, we first need to understand what Weaver was saying.</p>
+<p>Weaver’s contribution was to point out that Shannon’s purely mathematical information theory had a far broader reach than it appeared. He proposed that communication problems could be examined at three levels:</p>
+<ul><li><p><strong>Level A (Technical):</strong> Can the symbols of communication be transmitted accurately?</p>
+</li>
+<li><p><strong>Level B (Semantic):</strong> Do the transmitted symbols convey the desired meaning with precision?</p>
+</li>
+<li><p><strong>Level C (Effectiveness):</strong> Does the received meaning affect conduct in the desired way?</p>
+</li>
+</ul>
+<p>Before Weaver, people were accustomed to thinking about communication top-down: first ask “What do you want to achieve?” (effectiveness level), then “How do you put it into words?” (semantics level), and only then “How do you get it across?” (Technical level). Weaver wanted to emphasize a constraint running in the reverse direction: limitations at the technical level propagate upward, shaping what is possible at the semantic and effectiveness levels. But he went further. He argued that all three levels could share a single analytical framework, which terms like <em>receiver</em>, <em>transmitter</em>, <em>noise</em>, and <em>channel capacity</em> could describe semantic and effectiveness problems just as well as technical ones. Moreover, the influence between levels was not unidirectional: redundancy in grammatical structure (a semantic-level feature) can counteract channel noise (a technical-level problem), meaning the upper levels also act back on the lower ones.</p>
+<p>Weaver’s boldest insight may be buried in what reads like an offhand remark in his essay:</p>
+<blockquote><p><em>“One has the vague feeling that information and meaning may prove to be something like a pair of canonically conjugate variables in quantum theory, they being subject to some joint restriction that condemns a person to the sacrifice of the one as he insists on having much of the other.”</em></p>
+</blockquote>
+<p>This is not merely a rhetorical analogy. Shannon proved that there is a hard constraint between source entropy <em>H</em> and channel capacity <em>C</em>: when <em>H</em> &gt; <em>C</em>, error-free transmission becomes impossible. And the condition that maximizes source entropy is precisely the condition under which a signal’s statistical distribution most closely approximates uniform randomness, which is when redundancy is at its lowest and the signal looks most like noise.</p>
+<p>The key here is the dual role of redundancy. In English, roughly 50% of content is redundant: grammatical structures, predictable collocations, contextual cues. This redundancy “wastes” channel capacity in information-theoretic terms, but it is precisely this redundancy that allows a receiver to extract meaning. Redundancy embodies a language’s structure, and structure is the skeleton of meaning. If you maximize information (eliminating all redundancy so that every symbol is completely unpredictable) you achieve optimal channel utilization, but at the cost of destroy every structural cue a receiver relies on to extract meaning.</p>
+<p>Weaver also observed that when you try to force more information through a channel than its capacity allows (<em>H</em> &gt; <em>C</em>), error and confusion are inevitable. And this principle generalizes upward: if you overload the “capacity of the audience,” the result is not that you fill them up and spill the remainder, but a general, inescapable confusion.</p>
+<hr>
+<h2><em>His Master’s Voice</em>: A Letter with Information Pushed to Its Limit</h2>
+<p><em>His Master’s Voice</em> tells the story of a Manhattan Project–style effort to decode an alien signal —— the “His Master’s Voice” project —— and how it ends in “failure.” The narrator is the statistician Peter Hogarth, a choice of profession that is deeply suggestive, as I will explain later.</p>
+<p>Before turning to the three levels of analysis, it is worth laying out the letter’s core properties, since it is precisely these properties that cause Weaver’s conjugacy to produce extreme consequences at every level.</p>
+<h3>Core Properties of the Letter</h3>
+<p>The letter’s carrier is a neutrino stream (hypothetically the most penetrating of all elementary particles), originating from the vicinity of Alpha Canis Minoris. Converted to binary, it contains over two billion units and repeats in full every 416 hours. But the following properties are what matter for this essay’s argument:</p>
+<p><strong>Near-zero redundancy.</strong> As Hogarth explains: “The more efficiently the transmitter exploits the information channel, the more the transmitted message resembles noise. If the channel is fully utilized (in other words, there is no redundancy), then to the uninformed, the message is indistinguishable from pure noise.” Maximum channel utilization means maximum source entropy: information pushed to its ceiling.</p>
+<p><strong>Continuity.</strong> The signal transmits without interruption, without preamble, without any explicit start or end marker.</p>
+<p><strong>Closed structure.</strong> Mathematical analysis reveals the letter to be topologically closed. It can be read starting from any point.</p>
+<p><strong>Non-locality.</strong> Different parts of the letter lose their meaning when separated from the whole, like a keystone removed from an arch.</p>
+<p><strong>Biophilic effect.</strong> The neutrino stream carrying the letter stabilizes macromolecular solutions, yet the project team’s attempts to separate the signal’s “information content” from its “biophilic” function all fail.</p>
+<p><strong>“Frog Eggs.”</strong> A substance “read out” and synthesized from the letter. It generates energy through “cold” nuclear reactions. Terrestrial life never taps nuclear energy, but Frog Eggs live on it.</p>
+<p><strong>The TX effect.</strong> Under certain conditions, Frog Eggs can release and focus energy, hurling energy pulses into space. But the effect obeys an uncertainty-principle-like constraint: the greater the energy, the less accurate the focus.</p>
+<hr>
+<h2>Extreme Consequences at Three Levels</h2>
+<h3>Technical Level: When Signal and Noise Become Indistinguishable</h3>
+<p>The story of <em>His Master’s Voice</em> begins the moment someone discovers that neutrino noise is not noise. Researchers attempting to use random-number tables generated from observatory-recorded neutrino radiation find that the tables are not truly random—they contain periodic repetitions. The “His Master’s Voice” project is established and experts from every field are invited to attempt decryption.</p>
+<p>This starting point is itself a direct manifestation of the conjugacy at the technical level. With redundancy near zero, the signal is statistically almost indistinguishable from random noise. Only by comparing successive repetitions—the sole surviving “redundancy”—can it be identified as non-random at all.</p>
+<p>But the problems do not stop there. With each repetition, certain frequency bands exhibit slight differences in pulse shape that binary encoding cannot account for. Are they noise, or a finer layer of information? This question cannot be answered within the technical level alone, because the answer depends on our understanding of the letter’s encoding system—a semantic-level question. And our judgment about the encoding system depends in turn on our assumptions about the sender’s intent—an effectiveness-level question. The project team assumes from the outset that the signal is binary, because, as Hogarth puts it, “it is impossible for a person to begin doing anything without making assumptions.” But that assumption already smuggles in a semantic judgment about the letter’s form. We are only human; we can only form assumptions through a human lens. And the limitations of that lens seep into every ostensibly “technical” judgment from the very start.</p>
+<p>This is what Weaver’s mutual constraint between levels looks like under extreme conditions: faced with the letter, the three levels are not independent problems to be solved in sequence. They are entangled from the ground up.</p>
+<h3>Semantic Level: When Form and Content Become Inseparable</h3>
+<p>When we receive a message, we want to identify which parts carry information and which are redundant, so as to locate its substance. Weaver gives an example: in English, “that” very often follows “in the event” not because of the meaning of “that” itself, but because of English grammatical structure. “In the event” carries information; “that” is redundancy. If we could distinguish information from redundancy in the alien message, we could begin to read it.</p>
+<p><strong>1. However, distinguishing information from redundancy requires first identifying the message’s form: its symbol system and encoding structure. The letter’s design forecloses this possibility:</strong></p>
+<p>First, the letter has no preamble, no grammar, and no built-in dictionary. The protocol that human civilization imagined for interstellar communication——first broadcast a call signal demonstrating artificial origin, then systematically present grammar, syntax, and vocabulary—— is entirely absent. No dictionary means we do not know which units correspond to which meanings; no grammar means we do not know the rules governing their combination. Any decryption path modeled on natural language is doomed from the start.</p>
+<p>Second, identifying form requires recognizing the message’s boundaries, which is knowing where it begins and ends in order to determine its structural units. Consider the endlessly repeating phrase “Charlie deem he’s a brilliant actor Charlie deem he’s a brilliant actor Charlie deem…” Without knowing where the sentence starts, it could be parsed as “Charlie deem he’s a brilliant actor” or “he’s a brilliant actor Charlie deem,” yielding different semantic readings. Or take the repeating digit string 17234817234817…the “word” could be 172348, or 723481, or 234817, or 348172. Without a start marker, the same string can be segmented into entirely different units. But the letter transmits as an unbroken periodic repetition, with no interruption and no explicit boundary.</p>
+<p>Third, what if the absence of interruption is itself information? It may mean that the letter has no distinction between beginning and end, that it can be read from any point. This already tells us something about the letter’s form, except we cannot determine whether this is a formal feature (an encoding rule) or a content-level statement (a property of the object being described). Is the letter’s continuity a property of its code, or a property of whatever it describes? Before we can answer, the distinction between form and content has already begun to dissolve.</p>
+<p>The letter’s near-zero redundancy means that every unit may carry information. No part can safely be dismissed as “mere structure.” In human language, redundancy is the foothold for decoding. The letter’s design has all but eliminated redundancy, leaving the receiver with virtually no structural cues for extracting meaning. The price of pushing information to its limit is that the extractability of meaning is pushed to its minimum.</p>
+<p><strong>2. More fundamentally, the letter’s form and semantics are deeply entangled, making it nearly impossible to extract meaning apart from form:</strong></p>
+<p>First, the letter’s physical carrier is itself part of the informational content. The neutrino stream carrying the letter demonstrably stabilizes macromolecules (biophilic effect), yet every attempt to separate the signal’s “information content” from its functional “biophilic” property fails. The neutrino stream plays three roles simultaneously: it is the medium of transmission (channel), its modulation pattern constitutes the encoding (form), and its life-promoting effect is the content the message conveys or at least an inseparable part of that content. In human communication, the function of paper is not to express words; the function of electromagnetic waves is not to produce sound. The letter dissolves this separation.</p>
+<p>Second, this entanglement is further evident in the letter’s closed structure. Topologically closed and readable from any point, the letter resembles a description of an object-process rather than an utterance. Think of a benzene molecule: six carbon atoms forming a ring. If you encode this ring structure as a linear signal, it does not matter which carbon atom you start from. It is a ring, with no “beginning” or “end.” By contrast, a symphony has a first movement and a finale; a novel has an opening and a conclusion. Their meaning depends on linear order. Therefore the letter is more like an object. Yet in human language, a description of an object (form) and the object described (semantics) are clearly separated. A map is not the territory, and we know which parts of the map refer to the territory and which are merely features of the map itself. The letter’s property of closure, non-locality, and carrier-as-content blur this boundary. The synthesis of Frog Eggs is the proof: scientists extracted certain fragments from the letter’s code, mapped them onto specific atomic structures and stereochemical arrangements, and directly synthesized a substance. The letter does not merely describe something bug directly produces that something. Between form (code) and semantics (Frog Eggs), there is no reference-to-referent representational relationship. Form <em>is</em> semantics.</p>
+<p><strong>3. Could there exist a fully culture-transcendent encoding that would let the sender bypass these difficulties?</strong></p>
+<p>The linguist Baloyne in the book divides languages into two types: cultural languages used by humans (understanding them requires familiarity with the relevant culture) and the genetic code used between organisms (understanding it requires only physics and chemistry). On the surface, the genetic code appears “supracultural.” But Baloyne himself denies this hope: when a scientist shows you a structural model of a genotype, he has already translated the genetic code into chemical symbols and chemical symbols are themselves cultural artifacts. Any message is a “mixture” of cultural and natural components. You can reduce the cultural proportion, but you can never reduce it to zero.</p>
+<p>The communicative impasse Lem reveals at the semantic level, then, is not simply “we lack an alien dictionary.” The maximization of information dissolves every structural condition on which meaning depends: redundancy, boundaries, the separation of carrier and content, the distinction between cultural and natural encoding. This is what the conjugacy looks like at the semantic level: the more fully the sender exploits the channel, the harder it becomes for the receiver to extract any meaning at all.</p>
+<h3>Effectiveness Level: When Intent and Natural Process Become Indistinguishable</h3>
+<p>Weaver observed that if you overload the “capacity of the audience,” the result is not that you fill them up and spill the rest, but a general, inescapable confusion. At the effectiveness level, the letter’s <em>H</em> far exceeds humanity’s <em>C </em>not only in terms of instrumental precision but also in terms of cognition itself. The consequence of this overload is that the project team, made by humans, cannot determine whether an intentional agent stands behind the signal at all.</p>
+<p>There are intense disagreements within the project center on this question. Some believe the signal is a deliberate act of life-seeding by an ancient civilization. The physicist Lehner argues that the signal is neutrino radiation naturally produced during the pulsation cycle of the universe: no sender, no intent. The astrobiologist Silvester proposes that a pre-universe civilization encoded information into the creation process of the next universe itself. And Dr. Rappaport suggests the signal may be nothing more than the metabolic waste of a planetary-scale biosphere, which is a non-intelligent but highly organized life form that evolved mastery of nuclear energy, with its neutrino stream a mere byproduct of metabolism.</p>
+<p>On the surface, these disagreements are factual disputes. But at a deeper level, they concern whether the distinction between “artificial” and “natural” is itself tenable. Rappaport illustrates this with an elegant example: if I deliberately eat large quantities of sugar so that it will be excreted through my kidneys, thereby transmitting a prearranged message to whoever tests my urine (sugar detected means “yes,” sugar absent means “no”), then the sugar in my urine is “artificial.” But if I simply eat a lot of sugar because I like sweets, then its presence in my urine is “natural.” The difference lies not in the sugar itself but in whether we know that intent lies behind the process.</p>
+<p>Viewed together, these hypotheses reveal a striking pattern. The Lehner, Silvester, and Rappaport hypotheses are essentially physicalist positions: stances which de-intentionalize. They reduce the signal to a purely physical process, stripping away any assumption of “sender,” “purpose,” or “meaning.” Within Weaver’s framework, this can be understood as choosing the information end of the spectrum at the effectiveness level while sacrificing meaning: the language of physics can indeed describe every observable property of the signal, but the cost is that the “letter” is no longer a letter and “meaning” is entirely dissolved.</p>
+<p>Hogarth stands at the opposite end of the spectrum. He insists that an intentional agent stands behind the signal, that the letter is meaningful. He believes the TX effect is really a return signal: once the code is correctly deciphered, Frog Eggs should be able to hurl an energy pulse back to the sender at cosmic velocity, notifying them that contact has been made. The destructive TX that humans discovered is a product of misreading, and the sender who foresee this possibility built safeguards into the signal’s design. But the price Hogarth pays for holding onto meaning is that he cannot say precisely what the meaning is. He can feel the letter’s “inner harmony, a purely mathematical harmony,” and speaks of having “exchanged a mathematical perception for an aesthetic one.” Yet this feeling cannot be translated into propositional knowledge. He has grasped the conviction that the signal is meaningful, at the cost of being unable to articulate the “objective” information that meaning contains.</p>
+<p>This echoes Weaver’s conjugacy conjecture once more: the more you pursue the maximization of information (reducing everything to physics), the more meaning vanishes from your framework; the more you insist on meaning (holding onto your own convictions and hopes), the less “objective” information you can secure. <strong>When the receiver’s cognitive capacity is vastly overloaded, they are forced to choose between information and meaning. There is no middle ground.</strong></p>
+<hr>
+<h2>The Statistician’s Predicament</h2>
+<p>We can now return to the question of Hogarth’s profession.</p>
+<p>Lem’s decision to make a statistician the narrator of this story was probably no accident. Shannon’s information theory is, at its core, a statistical theory: information is measured by probability, redundancy is statistical structure, noise is statistical deviation, channel capacity is a statistical limit. The statistician commands precisely the toolkit that Weaver believed could operate at every level.</p>
+<p>Hogarth does achieve results with that toolkit. He proves the letter’s closed structure and provides mathematical “benediction” for the direction of empirical research. But these are achievements at the information end of the spectrum. Meaning, under conditions of maximized information, has been compressed to a place he cannot reach. His admission that he “exchanged a mathematical perception for an aesthetic one, perhaps both at once” is itself a confession of conjugacy. And his speculations about the sender’s safeguard mechanism represent the farthest point he can reach on the meaning end: conviction, not knowledge. His closest colleague responds: given the world we have been granted, “your idea is too beautiful, the picture you paint too complete.”</p>
+<p>What Lem demonstrates through this extreme thought experiment is that Weaver’s “vague feeling,” faced with a letter whose information has been pushed to its absolute limit, is no longer vague at all. It becomes a concrete cognitive catastrophe. At the technical level, signal and noise are indistinguishable. At the semantic level, form and content are inseparable. At the effectiveness level, intent and natural process are indistinguishable. Each layer’s “inseparability” follows from the same cause: the maximization of information has compressed the living space of meaning.</p>
+<p>But Lem is not arguing that Weaver was right or wrong. He is pushing Weaver’s framework to its extreme and showing where it begins to buckle. Weaver’s idea that levels mutually constrain one another and information and meaning rise and fall in inverse proportion is confirmed. But Weaver’s optimism that all of these problems can be integrated and managed within a single unified framework originating from the technical level collapses before this letter. When the entanglement between levels escalates from “mutual constraint” to “mutual fusion,” when information and meaning are no longer two recognizable faces of the same coin but have melted into a single alloy that cannot be cut apart, the framework itself has reached the boundary of its applicability.</p>
+<p>Of course, I am aware that reading Lem’s novel through Weaver’s framework is a kind of projection. But knowing it is a projection is not a reason to stop projecting. Without projection there is no starting point at all. And this is precisely Hogarth’s own methodological stance: “It is impossible for a person to begin doing anything without making assumptions.” The value of the Weaver framework lies not in its ability to “correctly” decode <em>His Master’s Voice</em>, but in its ability to show us where the letter breaches the framework’s boundaries. Perhaps Hogarth was right: this letter from the stars is “perhaps nothing more than a psychological association test, a particularly complex Rorschach test aimed precisely at those of us who try to decipher it.” But the reason a Rorschach test works is precisely that you project something onto it. <strong>In doing so, you can at least make out a shape of yourself you never knew was there.</strong></p>
+
+    </div>
+  </article>
+  <footer class="end">
+    <div class="rule"></div>
+    <p>First published on Substack, where you can comment and subscribe for new essays.</p>
+    <a class="orig" href="https://qunzh.substack.com/p/the-conjugacy-of-information-and" target="_blank" rel="noopener">Read on Substack <span aria-hidden="true">&#8599;</span></a>
+    <a class="next" href="revolt-of-the-vehicles.html"><span>Next essay</span><b>The Revolt of the Vehicles &#8594;</b></a>
+    <a class="back" href="./"><span aria-hidden="true">&#8592;</span>All writing</a>
+  </footer>
+</main>
+<script>
+/* the lime line under the bar fills as you read */
+{
+  const bar=document.getElementById("progress"),art=document.querySelector(".essay");
+  let raf=0;
+  const update=()=>{raf=0;const r=art.getBoundingClientRect(),total=r.height-innerHeight*.6;bar.style.setProperty("--p",Math.max(0,Math.min(1,-r.top/Math.max(1,total))).toFixed(4))};
+  addEventListener("scroll",()=>{if(!raf)raf=requestAnimationFrame(update)},{passive:true});
+  addEventListener("resize",update);update();
+}
+</script>
+</body>
+</html>
