@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#d7ff3d">
+<meta name="theme-color" content="#1d3bd1">
 <title>The Revolt of the Vehicles: Why Dennett’s De-Cartesianization Doesn&#x27;t Go Far Enough · Writing by Kingsley Zheng</title>
 <meta name="description" content="An Internal Critique of From Bacteria to Bach and Back">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,26 +13,26 @@
 /* VOICE an essay, read slowly: the same quiet black room as the drawings, now for words
    IDEA a single reading column under the lime bar; a thin lime line along the bar shows how far you have read
    PICTURE the essay's own header image, then text
-   COLOUR pure black ground, warm white text a step softer than the titles, grey labels, acid lime for the bar, progress, links and marks
+   COLOUR cobalt and sand: sand-coloured paper, deep-navy titles, slate text a step softer, warm grey labels, cobalt for the bar, progress, links and marks
    TYPE Syne (bold, wide) for the title and section heads; Manrope for reading, 18px on a 1.75 line
    LAYOUT one column about 68 characters wide; the original on Substack linked at the top and the end. Phone: the same, narrower */
-:root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--text:#dcdad4;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
-:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+:root{color-scheme:light;--bg:#ece4d4;--ink:#10183a;--text:#2b2f43;--mute:#675f51;--line:#d7cbb4;--acc:#1d3bd1;--bar:#1d3bd1;--bar-ink:#ece4d4;--btn:#1d3bd1;--btn-ink:#ffffff;--mark:#1d3bd1;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--text);font:18px/1.75 var(--ft)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-::selection{background:var(--acc);color:var(--on)}
+::selection{background:var(--mark);color:var(--btn-ink)}
 /* the lime bar, with the way back to the other pages and a line that fills as you read */
-.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--acc);color:var(--on)}
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--bar);color:var(--bar-ink)}
 .brand{margin-right:auto;min-height:44px;display:flex;align-items:center;font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
 .nav{display:flex;gap:4px}
-.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;line-height:1;text-decoration:none;border:1px solid rgba(5,5,5,.3)}
-.nav a:hover{border-color:var(--on)}
-.nav a[aria-current]{background:var(--on);color:var(--acc);border-color:var(--on)}
-.bar :focus-visible{outline-color:var(--on)}
-.progress{position:absolute;left:0;bottom:-3px;height:3px;width:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;line-height:1;text-decoration:none;border:1px solid color-mix(in srgb,var(--bar-ink) 30%,transparent)}
+.nav a:hover{border-color:var(--bar-ink)}
+.nav a[aria-current]{background:var(--bar-ink);color:var(--bar);border-color:var(--bar-ink)}
+.bar :focus-visible{outline-color:var(--bar-ink)}
+.progress{position:absolute;left:0;bottom:-3px;height:3px;width:100%;background:var(--mark);transform-origin:0 50%;transform:scaleX(var(--p,0))}
 
 .essay{max-width:68ch;margin:0 auto;padding:clamp(28px,6vh,72px) max(18px,3vw) 0}
 .back{display:inline-flex;gap:8px;font-size:14px;color:var(--mute);text-decoration:none;margin-bottom:clamp(20px,4vh,36px)}
@@ -42,9 +42,9 @@ a{color:inherit}
 h1{font-family:var(--fd);font-weight:700;font-size:clamp(34px,5vw,62px);line-height:1.02;letter-spacing:-.04em;color:var(--ink);margin:0 0 18px;text-wrap:balance}
 .dek{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--ink);margin:0 0 26px;text-wrap:pretty}
 .orig{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid var(--acc);border-radius:999px;color:var(--acc);font-size:14px;text-decoration:none;transition:background .2s,color .2s}
-.orig:hover{background:var(--acc);color:var(--on)}
+.orig:hover{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
 .lead{margin:clamp(28px,5vh,48px) 0 clamp(28px,5vh,44px)}
-.lead img{display:block;width:100%;height:auto;background:#111}
+.lead img{display:block;width:100%;height:auto;background:var(--line)}
 
 /* the essay itself */
 .body p{margin:0 0 1.15em;text-wrap:pretty}
@@ -54,12 +54,12 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(34px,5vw,62px);line-hei
 .body strong{color:var(--ink);font-weight:700}
 .body em{font-style:italic}
 .body a{color:var(--acc);text-underline-offset:3px}
-.body blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:2px solid var(--acc);color:var(--ink);font-size:1.06em}
+.body blockquote{margin:1.6em 0;padding:4px 0 4px 22px;border-left:2px solid var(--mark);color:var(--ink);font-size:1.06em}
 .body blockquote p:last-child{margin-bottom:0}
 .body ol,.body ul{margin:0 0 1.2em;padding-left:1.4em}
 .body li{margin:0 0 .6em;padding-left:.3em}
 .body li::marker{color:var(--acc);font-weight:700}
-.body hr{border:0;width:44px;height:2px;background:var(--acc);margin:2.6em auto}
+.body hr{border:0;width:44px;height:2px;background:var(--mark);margin:2.6em auto}
 
 .end{max-width:68ch;margin:0 auto;padding:clamp(36px,7vh,72px) max(18px,3vw) clamp(48px,9vh,96px)}
 .end .rule{width:100%;height:1px;background:var(--line);margin-bottom:28px}

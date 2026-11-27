@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#d7ff3d">
+<meta name="theme-color" content="#1d3bd1">
 <title>Writing by Kingsley Zheng</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +12,12 @@
 /* VOICE occasion, hushed: the essays of the same person whose drawings hang next door
    IDEA the twin of the artworks page: titles down the left; point at one and its opening appears on the right
    PICTURE no pictures; the essay's own subtitle, set large, and its first lines
-   COLOUR the same as the artworks page: pure black ground, white ink, grey labels, acid lime for the bar, the chosen title and the way out
+   COLOUR its own system, cobalt and sand: sand-coloured paper, deep-navy ink, warm grey labels, cobalt for the bar, the chosen title and the way in
    TYPE Syne (bold, wide) for titles; Manrope for reading
    LAYOUT a lime bar with Artworks / Writing; titles left, preview right; each essay opens in full on its own page (and is on Substack too).
           Phone: one list, every essay open */
-:root{color-scheme:dark;--bg:#000;--ink:#f4f4f1;--soft:#cfcdc7;--mute:#8d8d88;--line:#222222;--acc:#d7ff3d;--on:#050505;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
-:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+:root{color-scheme:light;--bg:#ece4d4;--ink:#10183a;--text:#2b2f43;--mute:#675f51;--line:#d7cbb4;--acc:#1d3bd1;--bar:#1d3bd1;--bar-ink:#ece4d4;--btn:#1d3bd1;--btn-ink:#ffffff;--mark:#1d3bd1;--fd:Syne,'Helvetica Neue',Arial,sans-serif;--ft:Manrope,system-ui,-apple-system,sans-serif}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--ft);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden}
@@ -25,13 +25,13 @@ button{font:inherit;color:inherit}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 /* the top bar: one lime band, with the way between the two pages */
-.bar{display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--acc);color:var(--on)}
+.bar{display:flex;align-items:center;gap:8px;padding:6px max(16px,3vw);background:var(--bar);color:var(--bar-ink)}
 .brand{margin-right:auto;min-height:44px;display:flex;align-items:center;font-family:var(--fd);font-size:18px;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
 .nav{display:flex;gap:4px}
-.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;text-decoration:none;border:1px solid rgba(5,5,5,.3)}
-.nav a:hover{border-color:var(--on)}
-.nav a[aria-current]{background:var(--on);color:var(--acc);border-color:var(--on)}
-.bar :focus-visible{outline-color:var(--on)}
+.nav a{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14px;text-decoration:none;border:1px solid color-mix(in srgb,var(--bar-ink) 30%,transparent)}
+.nav a:hover{border-color:var(--bar-ink)}
+.nav a[aria-current]{background:var(--bar-ink);color:var(--bar);border-color:var(--bar-ink)}
+.bar :focus-visible{outline-color:var(--bar-ink)}
 
 .cover{height:100%;overflow-x:hidden;overflow-y:auto;padding:clamp(12px,2.5vw,32px) max(16px,3vw) clamp(20px,3vw,40px);background:var(--bg);scrollbar-width:none}
 .cover::-webkit-scrollbar{display:none}
@@ -54,13 +54,13 @@ h1{font-family:var(--fd);font-weight:700;font-size:clamp(30px,3.1vw,46px);line-h
 .kick{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 18px;font-size:13px;color:var(--acc)}
 .kick span+span{color:var(--mute)}
 .sub{font-family:var(--fd);font-weight:700;font-size:clamp(26px,2.9vw,44px);line-height:1.1;letter-spacing:-.035em;margin:0 0 clamp(20px,3vh,32px);text-wrap:balance}
-.ex{font-size:clamp(16px,1.25vw,18px);line-height:1.7;color:var(--soft);margin:0 0 28px;max-width:36em;text-wrap:pretty}
+.ex{font-size:clamp(16px,1.25vw,18px);line-height:1.7;color:var(--text);margin:0 0 28px;max-width:36em;text-wrap:pretty}
 .ex::before{content:"\201C"}
 .ex::after{content:"\201D"}
 .ways{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
-.read{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--acc);color:var(--on);font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s}
+.read{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s}
 .read:hover{transform:translateX(3px)}
-.read:focus-visible{outline-color:var(--acc);outline-offset:3px}
+.read:focus-visible{outline-color:var(--btn);outline-offset:3px}
 .sub-link{font-size:14px;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .2s,border-color .2s}
 .sub-link:hover{color:var(--acc);border-color:var(--acc)}
 .rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
